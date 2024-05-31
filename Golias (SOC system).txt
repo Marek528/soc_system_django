@@ -3,7 +3,7 @@ Golias (SOC system)
 modely:
 - tema -> nazov, popis, konzultant(FK), student(FK), odbor (FK) (najst realne odbory na soc), dostupnost (volne, obsadene, cakajuce na schvalene)
 kontroly s konzultantom (kolko konzultacii prebehlo) -> pocet konzultacii prebehlo, vyber, max 3
-- veduci -> meno, priezvisko, email, heslo
+- ucitel -> meno, priezvisko, email, heslo
 - studenti -> meno, priezvisko, email, heslo, temu (optional)
 
 filtracia - nazov, veduci, odbor, dostupnost
