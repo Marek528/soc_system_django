@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Temy{% endblock %}
+{% block content %}
+    <h1>Temy</h1>
+    <div class="container">
+        {% for tema in temy %}
+            <div>
+                <h2>{{ tema.nazov }}</h2>
+                <p>{{ tema.odbor }}</p>
+                <p>{{ tema.popis }}</p>
+                <p>{{ tema.konzultant }}</p>
+                <p>{{ tema.student }}</p>
+                <p>{{ tema.dostupnost }}</p>
+                <p>{{ tema.pocet_kontrol }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

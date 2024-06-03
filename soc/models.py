@@ -8,7 +8,7 @@ class Ucitel(models.Model):
     heslo = models.CharField(max_length=255)
     
     def __str__(self):
-        return f'{self.meno} {self.meno}, {self.email}, {self.heslo}'
+        return f'{self.meno} {self.priezvisko}'
 
 
 class Student(models.Model):
@@ -18,7 +18,7 @@ class Student(models.Model):
     heslo = models.CharField(max_length=255)
     
     def __str__(self):
-        return f'{self.meno} {self.meno}, {self.email}, {self.heslo}'
+        return f'{self.meno} {self.priezvisko}'
 
 class Odbor(models.Model):
     nazov = models.CharField(max_length=100)
