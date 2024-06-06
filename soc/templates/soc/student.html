@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ student.meno }} {{ student.priezvisko }}{% endblock %}
+{% block content %}
+<h1 class="mb-3">Študent: {{ student.meno }} {{ student.priezvisko }}</h1>
+<div class="container">
+    {% for tema in temy %}
+        <div class="bg-info text-black p-3">
+            <h2 class="mb-4">{{ tema.nazov }}</h2>
+            <p><strong>Odbor: </strong>{{ tema.odbor }}</p>
+            <p><strong>Popis: </strong>{{ tema.popis }}</p>
+            <p><strong>Konzultant: </strong>{{ tema.konzultant }}</p>
+            <p><strong>Študent: </strong>{{ tema.student }}</a></p>
+            <p><strong>Dostupnosť: </strong>{{ tema.dostupnost }}</p>
+            <p><strong>Počet kontrol: </strong>{{ tema.pocet_kontrol }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

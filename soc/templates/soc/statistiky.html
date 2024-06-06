@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Štatistiky{% endblock %}
+{% block content %}
+<h1 class="my-3">Štatistiky</h1>
+<div class="container">
+    <p><strong>Počet učiteľov:</strong> {{ pocet_ucitelov }}</p>
+    <p><strong>Počet študentov:</strong> {{ pocet_studentov }}</p>
+    <p><strong>Počet tém:</strong> {{ pocet_tem }} </p>
+    <p><strong>Voľné témy:</strong> {{ pocet_volnych }}</p>
+    <p><strong>Obsadené témy:</strong> {{ pocet_obsadenych }}</p>
+    <p><strong>Čakajúce na schválenie:</strong> {{ pocet_cakajucich }}</p>
+</div>
+{% endblock %}
