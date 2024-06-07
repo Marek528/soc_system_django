@@ -8,7 +8,7 @@
             <h2 class="mb-4">{{ tema.nazov }}</h2>
             <p><strong>Odbor: </strong>{{ tema.odbor }}</p>
             <p><strong>Popis: </strong>{{ tema.popis }}</p>
-            <p><strong>Konzultant: </strong>{{ tema.konzultant }}</p>
+            <p><strong>Konzultant: </strong><a href="{% url 'vypis-ucitela' id=tema.konzultant.id %}" class="link-dark link-offset-2 link-underline-opacity-100 link-underline-opacity-25-hover">{{ tema.konzultant }}</a></p>
             <p><strong>Študent: </strong>{{ tema.student }}</a></p>
             <p><strong>Dostupnosť: </strong>{{ tema.dostupnost }}</p>
             <p><strong>Počet kontrol: </strong>{{ tema.pocet_kontrol }}</p>

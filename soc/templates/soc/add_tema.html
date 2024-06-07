@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Pridať tému{% endblock %}
+{% block content %}
+    <h1 class="my-3">Pridať tému</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nazov" class="form-label">Názov:</label>
+            <input type="text" name="nazov" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="popis" class="form-label">Popis:</label>
+            <input type="text" name="popis" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="konzultant" class="form-label">Konzultant:</label>
+            <select name="konzultant" id="konzultant" class="form-select" required>
+                <option selected>----------------------</option>
+                {% for i in ucitelia %}
+                    <option value="{{i.id}}">{{i.meno}} {{i.priezvisko}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="student" class="form-label">Študent:</label>
+            <select name="student" id="student" class="form-select" required>
+                <option selected>----------------------</option>
+                <option value="-">-</option>
+                {% for i in studenti %}
+                    <option value="{{i.id}}">{{i.meno}} {{i.priezvisko}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="odbor" class="form-label">Odbor:</label>
+            <select name="odbor" id="odbor" class="form-select" required>
+                <option selected>----------------------</option>
+                {% for i in odbory %}
+                    <option value="{{i.id}}">{{i.nazov}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dostupnost" class="form-label">Dostupnosť:</label>
+            <select name="dostupnost" id="dostupnost" class="form-select" required>
+                <option selected>----------------------</option>
+                {% for i in dostupnosti %}
+                    <option value="{{i.id}}">{{i.nazov}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pocet_kontrol">Počet kontrol:</label>
+            <input type="number" name="pocet_kontrol" class="form-control" min="0" max="3" step="1" required>
+        </div>
+        <button type="submit" class="btn btn-success" name='pridat'>Pridať</button>
+    </form>
+{% endblock %}
