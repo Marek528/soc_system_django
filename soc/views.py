@@ -3,7 +3,10 @@ from . models import *
 
 def vypis_tem(request):
     temy = Tema.objects.all().order_by('dostupnost', 'id')
-    return render(request, 'soc/temy.html', {'temy': temy})
+    ucitelia = Ucitel.objects.all()
+    odbory = Odbor.objects.all()
+    dostupnosti = Dostupnost.objects.all()
+    return render(request, 'soc/index.html', {'temy': temy, "ucitelia":ucitelia, "odbory":odbory, "dostupnosti":dostupnosti})
 
 def vypis_ucitela(request, id):
     ucitel = Ucitel.objects.get(id=id)

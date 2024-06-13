@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Temy{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Temy</h1>
+<form class="row g-3">
+    {% csrf_token %}
+    <div class="mb-3 col-auto">
+        <label for="konzultant" class="form-label">Konzultant:</label>
+        <select name="konzultant" id="konzultant-form" class="form-select" required>
+            <option value="" selected>----------------------</option>
+            {% for i in ucitelia %}
+            <option value="{{i.id}}">{{i.meno}} {{i.priezvisko}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3 col-auto">
+        <label for="odbor" class="form-label">Odbor:</label>
+        <select name="odbor" id="odbor-form" class="form-select" required>
+            <option value="" selected>----------------------</option>
+            {% for i in odbory %}
+            <option value="{{i.id}}">{{i.nazov}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3 col-auto">
+        <label for="dostupnost" class="form-label">Dostupnosť:</label>
+        <select name="dostupnost" id="dostupnost-form" class="form-select" required>
+            <option value="" selected>----------------------</option>
+            {% for i in dostupnosti %}
+            <option value="{{i.id}}">{{i.nazov}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</form>
+<div class="container">
+    {% for tema in temy %}
+    <div class="tema">
+    <details class="mt-4">
+        <summary class="bg-info text-black p-3">
+            <div class="d-flex justify-content-between">
+                <h2 style="max-width: fit-content;">{{ tema.nazov }}</h2>
+                {% if tema.dostupnost.nazov == "čakajúce na schválenie" %}
+                <p class='text-warning mb-1' style="max-width: fit-content;">{{ tema.dostupnost }}</p>
+                {% elif tema.dostupnost.nazov == "obsadené" %}
+                <p class='text-danger' style="max-width: fit-content;">{{ tema.dostupnost }}</p>
+                {% elif tema.dostupnost.nazov == "voľné" %}
+                <p class='text-success' style="max-width: fit-content;">{{ tema.dostupnost }}</p>
+                {% else %}
+                <p class='text-info' style="max-width: fit-content;">{{ tema.dostupnost }}</p>
+                {% endif %}
+            </div>
+        </summary>
+        <div class="bg-info text-black">
+            <div class="p-3">
+                <p class="tema-odbor" data-odbor="{{ tema.odbor.id }}"><strong>Odbor: </strong>{{ tema.odbor }}</p>
+                <p><strong>Popis: </strong>{{ tema.popis }}</p>
+                <p class="tema-konzultant" data-konzultant="{{ tema.konzultant.id }}"><strong>Konzultant: </strong><a href="{% url 'vypis-ucitela' id=tema.konzultant.id %}"
+                        class="link-dark link-offset-2 link-underline-opacity-100 link-underline-opacity-25-hover">
+                        {{ tema.konzultant }}</a></p>
+                {% if tema.student %}
+                <p><strong>Študent: </strong><a href="{% url 'vypis-studenta' id=tema.student.id %}"
+                        class="link-dark link-offset-2 link-underline-opacity-100 link-underline-opacity-25-hover">
+                        {{ tema.student }}</a></p>
+                {% else %}
+                <p><strong>Študent: </strong>-</p>
+                {% endif %}
+                <p class="tema-dostupnost" data-dostupnost="{{ tema.dostupnost.id }}"><strong>Dostupnosť: </strong>{{ tema.dostupnost }}</p>
+                <p><strong>Počet kontrol: </strong>{{ tema.pocet_kontrol }}</p>
+            </div>
+        </div>
+    </details>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block script %}
+<script src="{% static 'filter.js' %}"></script>
+{% endblock %}
