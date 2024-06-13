@@ -9,24 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const odborFilter = odborSelect.value;
         const dostupnostFilter = dostupnostSelect.value;
 
-        console.log(konzultantFilter);
-        console.log(odborFilter);
-        console.log(dostupnostFilter);
-
         themes.forEach((item) => {
             const konzultant = item.querySelector('.tema-konzultant').dataset.konzultant;
             const odbor = item.querySelector('.tema-odbor').dataset.odbor;
             const dostupnost = item.querySelector('.tema-dostupnost').dataset.dostupnost;
 
-            console.log(konzultant);
-            console.log(odbor);
-            console.log(dostupnost);
-
             const konzultantMatch = konzultantFilter === "" || konzultantFilter === konzultant;
             const odborMatch = odborFilter === "" || odborFilter === odbor;
             const dostupnostMatch = dostupnostFilter === "" || dostupnostFilter === dostupnost;
-
-            console.log(`Matches -> Konzultant: ${konzultantMatch}, Odbor: ${odborMatch}, Dostupnost: ${dostupnostMatch}`);
 
             if (konzultantMatch && odborMatch && dostupnostMatch) {
                 item.style.display = "block";

@@ -20,7 +20,7 @@ def vypis_studenta(request, id):
 
 def vypis_tem_samostatne(request):
     temy = Tema.objects.all().order_by('dostupnost', 'id')
-    return render(request, 'soc/temy_samostatne.html', {'temy': temy})
+    return render(request, 'soc/temy.html', {'temy': temy})
 
 def vypis_temy(request, id):
     tema = Tema.objects.get(id=id)
