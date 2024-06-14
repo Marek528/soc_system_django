@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Temy{% endblock %}
+{% block title %}Témy{% endblock %}
 
 {% block content %}
-<h1 class="mb-3">Temy</h1>
+<h1 class="my-3">Témy</h1>
 <form class="row g-3">
     {% csrf_token %}
     <div class="mb-3 col-auto">
@@ -35,7 +35,7 @@
         </select>
     </div>
 </form>
-<div class="container">
+<div class="container mb-4">
     {% for tema in temy %}
     <div class="tema">
     <details class="mt-4">

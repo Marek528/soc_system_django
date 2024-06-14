@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ student.meno }} {{ student.priezvisko }}{% endblock %}
 {% block content %}
-<h1 class="mb-3">Študent: {{ student.meno }} {{ student.priezvisko }}</h1>
+<h1 class="my-3">Študent: {{ student.meno }} {{ student.priezvisko }}</h1>
 <div class="container">
     {% for tema in temy %}
         <div class="bg-info text-black p-3">

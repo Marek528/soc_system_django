@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block title %}Temy{% endblock %}
+{% block title %}Témy{% endblock %}
 {% block content %}
-    <h1 class="mb-3">Temy</h1>
-    <div class="container">
+    <h1 class="my-3">Témy</h1>
+    <div class="container mb-4">
         {% for tema in temy %}
             <div class="bg-info text-black p-3 mt-3">
                 <h2><a href="{% url 'vypis-temy' id=tema.id %}" class="link-dark link-offset-2 link-underline-opacity-100 link-underline-opacity-25-hover">{{ tema.nazov }}</a></h2>
